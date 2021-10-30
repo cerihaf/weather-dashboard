@@ -1,16 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
 
+    <main class="container-fluid">
+      <!--sidebar-->
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+          <aside>
+            <label for="citySearch">
+              <h2 class="fw-bold">Search for a City:</h2>
+            </label>
+            <br />
+            <input
+              name="citySearch"
+              id="citySearch"
+              placeholder="Kansas City"
+              type="text"
+            />
+            <br />
+            <button id="searchBtn" class="btn btn-primary mt-3">Search</button>
+            <hr size="4" />
+            <div id="searchHistory"><!--search results go here--></div>
+          </aside>
+        </div>
+        <section class="col-md-8 col-sm-12">
+          <!--city weather details-->
+          <div class="border border-dark mt-2">
+            <h2 id="city"></h2>
+            <ul class="ms-0">
+              <li>Temp: <span id="temp"></span></li>
+              <li>Wind: <span id="wind"></span></li>
+              <li>Humidity: <span id="humidity"></span></li>
+              <li>UV Index: <span id="uvIndex"></span></li>
+            </ul>
+          </div>
+          <!--5-day forecast-->
+          <div>
+            <h3>5-Day Forecast:</h3>
+            <div id="forecastCards"><!--5 forecast cards will go here--></div>
+          </div>
+        </section>
+      </div>
+    </main>
 
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>
