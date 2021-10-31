@@ -9,6 +9,7 @@ var uvIndex = document.getElementById("uvIndex");
 var cards = document.getElementById("forecastCards");
 var searchHistory = document.getElementById("searchHistory");
 
+var savedCities = []
 
 var geoCord = "http://api.openweathermap.org/geo/1.0/direct?limit=1&appid=be42f8237631c96e686a5fc924ebe9dd"
 var weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?appid=8d7a67ef47192bdaaee4e3e539a24175";
@@ -51,12 +52,23 @@ function displayWeather(weather, cityName){
         } else if(weather.current.uvi>10) {
             uvIndex.style.backgroundColor = colors[9]
         } else {
-            uvIndex.style.backgroundColor = colors[weather.current.uvi]
+            console.log(Math.floor(weather.current.uvi))
+            uvIndex.style.backgroundColor = colors[Math.floor(weather.current.uvi)]
             console.log(colors[weather.current.uvi])
         }
 };
 
-
+function loadSearchHistory(loadCity) {
+    var searchListEl = document.createElement("li");
+    searchListEl.className = "search-history";
+    var btn = document.createElement("button");
+    btn.textContent = loadCity;
+    btn.className = "btn btn-secondary"
+    btn.addEventListener("click", function(){
+        getWeather(loadCity)})
+    searchListEl.append(btn)
+    searchHistory.append(searchListEl)
+};
 
 // function suggested by byron to lowercase and join the searched city name
 function citySearch(str) {
@@ -72,6 +84,24 @@ function citySearch(str) {
   };
 
 
+  function loadCity() {
+    var savedCitiesJSON = localStorage.getItem("searchHistory");
+    // if there are no cities, set cities to an empty array and return out of the function
+    if (!savedCitiesJSON) {
+      return false;
+    }
+    console.log("Saved cities found!");
+    // else, load up saved tasks
+  
+    // parse into array of objects
+    savedCities = JSON.parse(savedCitiesJSON);
+  
+    // loop through savedCities array
+    for (var i = 0; i < savedCities.length; i++) {
+      // pass each task object into the `searchHistory` function
+      loadSearchHistory(savedCities[i]);
+    }
+  };
 
 
 
@@ -83,4 +113,9 @@ function citySearch(str) {
     var text = cityQuery.value
     var query = citySearch(text)
     getWeather(query)
-  })
+    savedCities.push(query)
+    localStorage.setItem("searchHistory", JSON.stringify(savedCities));
+    loadSearchHistory(query)
+  });
+  
+  loadCity();

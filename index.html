@@ -21,7 +21,7 @@
     <main class="container-fluid">
       <!--sidebar-->
       <div class="row">
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-3 col-sm-12">
           <aside>
             <label for="citySearch">
               <h2 class="fw-bold">Search for a City:</h2>
@@ -36,12 +36,16 @@
             <br />
             <button id="searchBtn" class="btn btn-primary mt-3">Search</button>
             <hr size="4" />
-            <div id="searchHistory"><!--search results go here--></div>
+            <div>
+              <ul id="searchHistory">
+                <!--search results go here-->
+              </ul>
+            </div>
           </aside>
         </div>
-        <section class="col-md-8 col-sm-12">
+        <section class="col-md-9 col-sm-12">
           <!--city weather details-->
-          <div class="border border-dark mt-2">
+          <div class="border border-dark mt-2 p-2">
             <h2 id="city"></h2>
             <ul class="ms-0">
               <li>Temp: <span id="temp"></span></li>
