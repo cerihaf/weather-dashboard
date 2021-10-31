@@ -11,7 +11,7 @@ var searchHistory = document.getElementById("searchHistory");
 
 var savedCities = []
 
-var geoCord = "http://api.openweathermap.org/geo/1.0/direct?limit=1&appid=be42f8237631c96e686a5fc924ebe9dd"
+var geoCord = "https://api.openweathermap.org/geo/1.0/direct?limit=1&appid=be42f8237631c96e686a5fc924ebe9dd"
 var weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?appid=8d7a67ef47192bdaaee4e3e539a24175";
 
 
@@ -40,7 +40,7 @@ function getWeather(query) {
 };
 
 function displayWeather(weather, cityName){
-    var icon = `http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`
+    var icon = `https://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`
     city.innerHTML = `${cityName} (${currentDate}) <img class="img-fluid" src="${icon}" alt="${weather.current.weather[0].description}"/>`
     console.log(weather)
     temp.innerHTML = `${Math.floor((weather.current.temp-273.15) * (9/5) +32)} &#8457;`;
@@ -68,7 +68,7 @@ function displayWeather(weather, cityName){
             card.append(date)
             var img = document.createElement("img")
                 img.classList.add("img-fluid", "w-25")
-                img.setAttribute("src", `http://openweathermap.org/img/wn/${cards[i].weather[0].icon}@2x.png`)
+                img.setAttribute("src", `https://openweathermap.org/img/wn/${cards[i].weather[0].icon}@2x.png`)
                 img.setAttribute("alt", cards[i].weather.description)
             card.append(img)
             var list = document.createElement("ul")
