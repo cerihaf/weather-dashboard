@@ -58,6 +58,7 @@ function displayWeather(weather, cityName){
             console.log(colors[weather.current.uvi])
         }
     var cards = weather.daily
+        forecastCards.innerHTML = ""
         for(var i = 0; i<5; i++){
             var column = document.createElement("div")
             column.classList.add("col-md-auto", "col-sm-12")
