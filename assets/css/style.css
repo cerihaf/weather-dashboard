@@ -29,4 +29,10 @@ ul {
 
 ul li {
   padding-bottom: 0.5rem;
+  font-size: small;
+}
+
+h4 {
+  font-size: small;
+  font-weight: bold;
 }
